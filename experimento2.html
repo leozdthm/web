@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información sobre Energía Eólica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #80deea); /* Gradiente de fondo */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            overflow: auto; /* Permitir desplazamiento solo en el contenido */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #00796b;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra en el texto */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 16px;
+            background: linear-gradient(to right, #00796b, #004d40); /* Botón con gradiente */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #004d40, #00796b); /* Cambio de gradiente al pasar el mouse */
+            transform: translateY(-2px);
+        }
+
+        #info {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f1f8e9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .side-image {
+            height: 400px;
+            width: 345px; /* Ajusta el tamaño según sea necesario */
+            margin: 0 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Generador de energía eólica</h1>
+    </header>
+
+    <div class="image-container">
+        <img src="accciona-aerogeneradores.jpg" alt="Imagen Izquierda" class="side-image">
+    </div>
+
+    <div class="container">
+        <button onclick="handleDoubleClick('Definición')">Definición</button>
+        <button onclick="handleDoubleClick('¿Cómo Funciona?')">¿Cómo Funciona?</button>
+        <button onclick="handleDoubleClick('Ventajas')">Ventajas</button>
+        <button onclick="handleDoubleClick('Problemas')">Problemática</button>
+        <button onclick="handleDoubleClick('Importancia')">Importancia</button>
+
+        <div id="info"></div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        let clickTimer = null;
+
+        function handleDoubleClick(section) {
+            clickCount++;
+
+if (clickCount === 1) {
+    clickTimer = setTimeout(() => {
+        clickCount = 0; // Reinicia el contador después de un segundo
+    }, 900); // Tiempo para detectar el segundo clic
+} else if (clickCount === 2) {
+    clearTimeout(clickTimer); // Limpia el temporizador
+    clickCount = 0; // Reinicia el contador
+    location.reload(); // Refresca la página
+}
+
+// Muestra la información correspondiente
+switch (section) {
+    case 'Definición':
+        mostrarDefinicion();
+        break;
+    case '¿Cómo Funciona?':
+        mostrarComoFunciona();
+        break;
+    case 'Ventajas':
+        mostrarVentajas();
+        break;
+    case 'Problemas':
+        mostrarProblematica();
+        break;
+    case 'Importancia':
+        mostrarImportancia();
+        break;
+}
+}
+
+function mostrarDefinicion() {
+document.getElementById('info').innerHTML = `
+    <h2>Definición</h2>
+    <p>La energía eólica es una forma de energía renovable que se genera a partir del movimiento del viento. Este tipo de energía se produce cuando el viento mueve las palas de aerogeneradores (similares a molinos de viento modernos), lo que hace girar un rotor conectado a un generador que convierte la energía cinética del viento en electricidad.</p>
+    <img src="Definicion(1).jpg" alt="Definición de Energía Eólica" />
+`;
+}
+
+function mostrarComoFunciona() {
+document.getElementById('info').innerHTML = `
+    <h2>¿Cómo Funciona?</h2>
+    <p>El mini generador eólico funciona captando la energía del viento a través de sus aspas, que giran y mueven un motor DC. Este motor convierte el movimiento en electricidad, la cual fluye por un circuito hasta encender un LED, indicando la generación de energía. Es un modelo simple y práctico que demuestra cómo transformar la energía del viento en electricidad.</p>
+    <img src="Imagen de WhatsApp 2024-11-24 a las 23.31.42_d5e09459.jpg" alt="Como Funciona la Energía Eólica" />
+`;
+}
+
+function mostrarVentajas() {
+document.getElementById('info').innerHTML = `
+    <h2>Ventajas</h2>
+    <p>  
+La energía eólica es limpia, renovable y no genera emisiones contaminantes. Es económica a largo plazo, reduce la dependencia de combustibles fósiles y puede instalarse en zonas remotas. Tiene bajo impacto ambiental, fomenta empleos, diversifica las fuentes energéticas y sensibiliza sobre la sostenibilidad. Además, es una solución eficiente y accesible para un futuro más verde.</p>
+    <img src="Ventajas(1).jpg" alt="Ventajas de la Energía Eólica" />
+`;
+}
+
+function mostrarProblematica() {
+document.getElementById('info').innerHTML = `
+    <h2>Problemática</h2>
+    <p>La dependencia de energías no renovables y el aumento de la demanda energética requieren alternativas sostenibles. Aunque la energía eólica es limpia y abundante, su uso está limitado por la falta de tecnologías accesibles a pequeña escala. Muchas comunidades rurales no tienen soluciones asequibles para generar electricidad. Este proyecto busca resolver este problema mediante un mini generador eólico que sirve como herramienta educativa para demostrar el aprovechamiento eficiente y sostenible del viento.</p>
+    <img src="contaminacion.png" alt="Problemática" />
+`;
+}
+
+function mostrarImportancia() {
+document.getElementById('info').innerHTML = `
+    <h2>Importancia</h2>
+    <p>  
+La energía eólica es clave para combatir el cambio climático, ya que es una fuente limpia, renovable y sostenible. Reduce la dependencia de combustibles fósiles, disminuye las emisiones contaminantes y promueve el acceso a electricidad en zonas remotas. Además, contribuye al desarrollo económico mediante la creación de empleos y la diversificación energética, siendo fundamental para un futuro más sostenible y equilibrado.</p>
+    <img src="Importancia1.jpg" alt="Importancia" />
+`;
+}
+</script>
+</body>
+</html>
